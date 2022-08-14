@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  s3-eventLambda
+
+  Sample SAM Template for s3-eventLambda
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  S3EventFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: s3-eventLambda
+      Handler: s3event.AppS3::handleRequest
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 60
+      Role: 'arn:aws:iam::796731763832:role/s3_dynamodb_access_role'
+
+  SQSEventFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: s3-eventLambda
+      Handler: s3event.AppSQS::handleRequest
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 60
+      Role: 'arn:aws:iam::796731763832:role/s3_dynamodb_access_role'
+

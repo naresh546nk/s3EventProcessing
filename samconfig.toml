@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "s3-event-stack"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1mq918y0tr6a4"
+s3_prefix = "s3-event-stack"
+region = "ap-south-1"
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
